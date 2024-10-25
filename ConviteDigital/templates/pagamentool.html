@@ -1,0 +1,32 @@
+{% extends "homepage.html" %}
+{% block titulo %}
+  <title>Pagamento</title>
+{% endblock %}
+{% block body %}
+<body>
+    <div class="container">
+        <h1>Confirmação de Pagamento</h1>
+        <p>Por favor {{user}}, utilize o QR code abaixo ou a chave de pagamento para confirmar sua presença.</p>
+        <div class="qrcode">
+            <!-- Espaço para inserir o QR code -->
+            <p>QR Code</p>
+        </div>
+        <div class="payment-key">
+            <!-- Espaço para inserir a chave de pagamento -->
+            <label for="payment-key">Chave de Pagamento:</label>
+            <input type="text" id="payment-key" name="payment-key" placeholder="Insira a chave aqui">
+        </div>
+        {% if form %}
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{form.foto}}
+            {{form.botao_conf}}
+        </form>
+        {% endif %}
+
+
+
+        <a href="{{url_for('logout')}}">Sair</a>
+    </div>
+</body>
+{% endblock %}

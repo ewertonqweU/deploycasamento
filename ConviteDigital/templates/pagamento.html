@@ -1,0 +1,47 @@
+{% extends "homepage.html" %}
+{% block titulo %}
+  <title>Pagamento</title>
+{% endblock %}
+{% block body %}
+<body>
+    <div class="container">
+        <h1>Confirmação de Pagamento</h1>
+        <p>Por favor, {{ user }}, utilize o QR code abaixo para confirmar sua presença. </p>
+        <div class="qrcode">
+            <!-- Espaço para inserir o QR code -->
+            {% if statusPag == "pending" %}
+            <img width="100%" height="100%" src="data:image/jpeg;base64,{{ qrcodeimg }}">
+            <button onclick="copyText()" class="btn btn-secondary mt-3">Copiar Texto</button>
+
+            {% elif statusPag == "approved" %}
+                {% if form %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ form.csrf_token }}
+
+                        <div class="form-group">
+                            <label for="foto">Comprovante de Pagamento</label>
+                            {{ form.foto(class="form-control") }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar Comprovante</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+
+
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary mt-3">Sair</a>
+    </div>
+
+    <script>
+        function copyText() {
+            const text = "{{qrcodecop}}";
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Codigo de pagamento copiado!");
+            }).catch(err => {
+                console.error("Erro ao copiar texto: ", err);
+            });
+        }
+    </script>
+</body>
+{% endblock %}

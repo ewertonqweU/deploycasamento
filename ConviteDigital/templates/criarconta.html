@@ -1,0 +1,21 @@
+{% extends "homepage.html" %}
+{% block titulo %}
+    <title>Cadastrar</title>
+{% endblock %}
+
+{% block formulario %}
+
+        <form method="POST">
+            {{ form.csrf_token }}
+            {{ form.user.label() }}
+            {{ form.user() }}
+
+            {{ form.senha.label() }}
+            {{ form.senha() }}
+
+            {{ form.confirmacao_senha.label() }}
+            {{ form.confirmacao_senha() }}
+            {{ form.botao_conf() }}
+
+        </form>
+{% endblock %}
