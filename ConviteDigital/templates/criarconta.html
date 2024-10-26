@@ -5,7 +5,7 @@
 
 {% block formulario %}
 
-        <form method="POST">
+        <form method="POST" style="font-size: 2em;">
             {{ form.csrf_token }}
             {{ form.user.label() }}
             {{ form.user() }}
