@@ -18,8 +18,9 @@
         <p class="date-time">05 Dezembro 2024<br>Quinta-Feira às 18:30 Horas</p>
         <p class="address">Rua Manoel Francisco de Melo, 333 - João Pessoa</p>
         <p class="rsvp">Confirme sua presença</p>
+        <div>
         {% block formulario %}
-        <form method="POST">
+        <form method="POST" style="font-size: 2em;">
             {{ form.csrf_token }}
             {{ form.user.label() }}<br>
             {{ form.user() }}<br>
@@ -32,7 +33,7 @@
 
         </form>
         {% endblock %}
-
+        </div>
     </div>
 </body>
 {% endblock %}
