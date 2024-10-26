@@ -46,15 +46,17 @@ def confirma(user):
         qrcodeimg = GerarQrcode(current_user.username)[1]
         statusPag = GerarQrcode(current_user.username)[2]
         formfoto = FormFoto()
-        pgto = Usuario(pagamento = statusPag)
+        #pgto = Usuario(pagamento = statusPag)
         item = database.session.query(Usuario).filter_by(username=current_user.username).first()
         item.pagamento=statusPag
         database.session.commit()
         if formfoto.validate_on_submit():
             arquivo = formfoto.foto.data
             nome_arq = secure_filename(arquivo.filename)
+            nome_arquivo = arquivo.filename
+            extensao_arquivo = os.path.splitext(nome_arquivo)
             caminho = os.path.join(os.path.abspath(os.path.dirname(__file__))
-                              ,app.config["UPLOAD_FOLDER"],nome_arq)
+                              ,app.config["UPLOAD_FOLDER"],f"Comprovante de {current_user.username}{extensao_arquivo[1]}")
             arquivo.save(caminho)
             foto = Foto(imagem = nome_arq, id_usuario = current_user.id )
             database.session.add(foto)

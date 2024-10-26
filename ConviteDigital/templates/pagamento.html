@@ -6,30 +6,39 @@
 <body>
     <div class="container">
         <h1>Confirmação de Pagamento</h1>
+
+        {% if statusPag == "pending" %}
         <p>Por favor, {{ user }}, utilize o QR code abaixo para confirmar sua presença. </p>
+        <!-- Espaço para inserir o QR code -->
         <div class="qrcode">
-            <!-- Espaço para inserir o QR code -->
-            {% if statusPag == "pending" %}
-            <img width="100%" height="100%" src="data:image/jpeg;base64,{{ qrcodeimg }}">
-            <button onclick="copyText()" class="btn btn-secondary mt-3">Copiar Texto</button>
-
-            {% elif statusPag == "approved" %}
-                {% if form %}
-                    <form method="POST" enctype="multipart/form-data">
-                        {{ form.csrf_token }}
-
-                        <div class="form-group">
-                            <label for="foto">Comprovante de Pagamento</label>
-                            {{ form.foto(class="form-control") }}
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Enviar Comprovante</button>
-                    </form>
-                {% endif %}
-            {% endif %}
+        <img width="80%" height="100%" src="data:image/jpeg;base64,{{ qrcodeimg }}">
         </div>
+        <br>
+        <button onclick="copyText()" class="btn btn-secondary mt-3">Copiar Texto</button>
+        {% elif statusPag == "approved" %}
+        <p>Muito obrigado, {{ user }}, se possivel envie a baixo o comprovante para os noivos. </p>
+        <!-- Espaço para inserir o QR code -->
+        <div class="qrcode">
 
+            {% if form %}
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
 
+                    <div class="form-group">
+                        <label for="foto">Comprovante de Pagamento</label>
+                        <br>
+                        <br>
+                        {{ form.foto(class="form-control") }}
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Enviar Comprovante</button>
+                </form>
+        </div>
+        <br>
+            {% endif %}
+            {% endif %}
+        <br>
+        <br>
         <a href="{{ url_for('logout') }}" class="btn btn-secondary mt-3">Sair</a>
     </div>
 

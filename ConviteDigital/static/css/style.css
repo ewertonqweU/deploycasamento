@@ -1,0 +1,83 @@
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f5f5dc; /* Bege claro para o fundo */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff8dc; /* Bege chique claro para o container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+.qrcode, .payment-key {
+    background-color: #fff;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.qrcode {
+    height: 200px;
+    width: 400px;
+    margin: auto;
+}
+
+.payment-key input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .qrcode, .payment-key {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 0.9em;
+    }
+    .qrcode {
+        height: 150px;
+        width: 150px;
+    }
+    .payment-key input {
+        font-size: 1em;
+    }
+}

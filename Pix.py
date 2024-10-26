@@ -5,7 +5,7 @@ def GerarQrcode(Usuario):
   url = "https://api.mercadopago.com/v1/payments"
 
   payload = json.dumps({
-    "transaction_amount": 1,
+    "transaction_amount": 0.5,
     "description": f"Confirmação de presença de {Usuario}",
     "payment_method_id": "pix",
     "payer": {
@@ -31,7 +31,7 @@ def GerarQrcode(Usuario):
     'accept': 'application/json',
     'content-type': 'application/json',
     'Authorization': 'Bearer APP_USR-8994682358026592-102420-361da1d854dbdc35d9d7293c600ea73f-407100150',
-    'X-Idempotency-Key': Usuario
+    'X-Idempotency-Key': f"{Usuario}T"
   }
 
   response = requests.request("POST", url, headers=headers, data=payload)
