@@ -1,83 +1,69 @@
-body {
-    font-family: 'Georgia', serif;
-    background-color: #f5f5dc; /* Bege claro para o fundo */
-    color: #333;
-    text-align: center;
-    padding: 20px;
-    margin: 0;
-}
-
 .container {
-    background-color: #fff8dc; /* Bege chique claro para o container */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.card {
+
+height: 80vh;
+background-image: url(../statics/fundo\ 1.png);
+background-repeat: no-repeat;
+background-size: cover;
+background-color: black;
+border-radius: 15px;
+margin: auto;
+}
+.imagem{
+margin-top: 25%;
 }
 
-h1 {
-    font-size: 4.5em;
-    margin-bottom: 0.5em;
+.texto1 {
+color: aliceblue;
+background: rgba(0, 0, 0, 0.55);
+border-radius: 25px;
+width: 95%;
+margin: auto;
+
+}
+.titulo {
+text-align: center;
 }
 
-p {
-    font-size: 2.2em;
-    margin: 0.5em 0;
+.mensagem{
+margin: 0;
+text-align: center;
+/*text-align-last: justify;*/
+justify-content: center;
+width: 90%;
 }
 
-.qrcode, .payment-key {
-    background-color: #fff;
-    border: 2px dashed #ccc;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
+.containerTexto {
+  display: flex;
+  justify-content: center;
+
 }
 
-.qrcode {
-    height: 200px;
-    width: 400px;
-    margin: auto;
+.informações_adicionais {
+
+  text-align: center;
 }
 
-.payment-key input {
-    width: 100%;
-    padding: 10px;
-    font-size: 2.2em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.input{
+  display: flex;
+  justify-content: center;
+}
+.inpt{
+width: 80%;
+text-align: center;
+
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    .container {
-        padding: 15px;
-    }
-    h1 {
-        font-size: 2em;
-    }
-    p {
-        font-size: 1em;
-    }
-    .qrcode, .payment-key {
-        padding: 15px;
-    }
+.button{
+  display: flex;
+  justify-content: center;
 }
 
-@media (max-width: 400px) {
-    h1 {
-        font-size: 1.8em;
-    }
-    p {
-        font-size: 0.9em;
-    }
-    .qrcode {
-        height: 150px;
-        width: 150px;
-    }
-    .payment-key input {
-        font-size: 1em;
-    }
+.bnt{
+  width: 40%;
+  text-align: center;
+
 }

@@ -1,40 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-
-   {% block titulo %} <title>Convite</title> {% endblock %}
-
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./static/css/style.css">
 
 </head>
-{% block body %}
 <body>
-    <div class="container">
-        <h1>ARYANNE</h1>
-        <h2>E</h2>
-        <h1>EWERTON</h1>
-        <p>convidam para o seu casamento</p>
-        <p class="date-time">05 Dezembro 2024<br>Quinta-Feira às 18:30 Horas</p>
-        <p class="address">Rua Manoel Francisco de Melo, 333 - João Pessoa</p>
-        <p class="rsvp">Confirme sua presença</p>
-        <div>
-        {% block formulario %}
-        <form method="POST" style="font-size: 2em;">
-            {{ form.csrf_token }}
-            {{ form.user.label() }}<br>
-            {{ form.user() }}<br>
 
-            {{ form.senha.label() }}<br>
-            {{ form.senha() }}<br>
-            <br>
-            {{ form.botao_conf() }}<br>
+  <div class="container">
+      <div class="card">
+          <div class="imagem">
+              <Div class="fundo">
+                        <div class="texto1">
+                          
+                          <h2 class="titulo">Confirme sua presença</h2>
+                          
+                          <div class="containerTexto">
+                              <p class="mensagem">
+                                O valor do presente será convertido para a ajuda de custo com o casamento.<br>
+                                Valor de R$ 78,00 por convidado.<br>
+                                Conta para depósito do valor, até 7 dias antes da data do casamento<br><br>
+                              </p>
+                          </div>
+                          <P class="informações_adicionais">
+                            Pix: aryannesales123@gmail.com<br>
+                            Aryanne Vitória Sales dos Santos<br>
+                            Banco: Nubank
+                          </P>
+                        </div>
 
+                  <div class="input">
+                    <input type="text" class="inpt" placeholder="Nome dos Convidados">
+                  </div>
+                  <br>
+                  <div class="input">
+                    <input type="text" class="inpt" placeholder="Quantidade de Convidados">
+                  </div>
+                  <br>
+                  <div class="button">
+                    <button type="button" class="bnt">Confirmar</button>
+                  </div>
+              </Div>    
+          </div>
+      </div>  
+</div>
 
-        </form>
-        {% endblock %}
-        </div>
-    </div>
 </body>
-{% endblock %}
 </html>

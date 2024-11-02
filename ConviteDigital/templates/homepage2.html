@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+   {% block titulo %} <title>Convite</title> {% endblock %}
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+
+</head>
+{% block body %}
+<body>
+    <div class="container">
+        <h1>ARYANNE</h1>
+        <h2>E</h2>
+        <h1>EWERTON</h1>
+        <p>convidam para o seu casamento</p>
+        <p class="date-time">05 Dezembro 2024<br>Quinta-Feira às 18:30 Horas</p>
+        <p class="address">Rua Manoel Francisco de Melo, 333 - João Pessoa</p>
+        <p class="rsvp">Confirme sua presença</p>
+        <div>
+        {% block formulario %}
+        <form method="POST" style="font-size: 2em;">
+            {{ form.csrf_token }}
+            {{ form.user.label() }}<br>
+            {{ form.user() }}<br>
+
+            {{ form.senha.label() }}<br>
+            {{ form.senha() }}<br>
+            <br>
+            {{ form.botao_conf() }}<br>
+
+
+        </form>
+        {% endblock %}
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>
