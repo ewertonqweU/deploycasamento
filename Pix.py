@@ -42,4 +42,4 @@ def GerarQrcode(Usuario,quantidade):
   StatusPag = Qrcode['status']
   return Copia_e_Cola,img,StatusPag
 
-print(GerarQrcode("ewerton",float("2")))
+#print(GerarQrcode("ewerton",float("2")))
