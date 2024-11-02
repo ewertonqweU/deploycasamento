@@ -4,13 +4,13 @@
 }
 .card {
 
-height: 80vh;
+height: 95vh;
 background-image: url(../statics/fundo\ 1.png);
 background-repeat: no-repeat;
 background-size: cover;
 background-color: black;
 border-radius: 15px;
-margin: auto;
+margin-top: 2.5%;
 }
 .imagem{
 margin-top: 25%;
