@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./static/css/style.css">
 
 </head>
-<body>
+<body onload="copyText()">
 
   <div class="container">
       <div class="card">
@@ -24,28 +24,49 @@
                                 Conta para depósito do valor, até 7 dias antes da data do casamento<br><br>
                               </p>
                           </div>
+                            {% if script_to_run %}
                           <P class="informações_adicionais">
-                            Pix: aryannesales123@gmail.com<br>
-                            Aryanne Vitória Sales dos Santos<br>
-                            Banco: Nubank
+                            Pix:<br>
+                            <img width="45%" height="100%" src="data:image/jpeg;base64,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"><br>
+                            EWERTON JOSE ELIAS DOS SANTOS<br>
+                            Banco: Mercado Pago
                           </P>
+                            {% endif %}
                         </div>
-
+                  <br>
+                {% block formulario %}
+              <form method="POST" style="font-size: 2em;">
+                  {{ form.csrf_token }}
                   <div class="input">
-                    <input type="text" class="inpt" placeholder="Nome dos Convidados">
+                      {{ form.convidados(class="inpt", placeholder="Nome dos Convidados") }}
                   </div>
                   <br>
                   <div class="input">
-                    <input type="text" class="inpt" placeholder="Quantidade de Convidados">
+                      {{ form.qtd(class="inpt", placeholder="Quantidade de Convidados") }}
                   </div>
                   <br>
                   <div class="button">
-                    <button type="button" class="bnt">Confirmar</button>
+                      {{ form.botao_conf(class="bnt") }}
                   </div>
-              </Div>    
+              </form>
+                {% endblock %}
+              </Div>
           </div>
       </div>  
 </div>
+
+{% if script_to_run %}
+ <script>
+        function copyText() {
+            const text = "{{qrcodecop}}";
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Codigo de pagamento copiado!");
+            }).catch(err => {
+                console.error("Erro ao copiar texto: ", err);
+            });
+        }
+ </script>
+{% endif %}
 
 </body>
 </html>

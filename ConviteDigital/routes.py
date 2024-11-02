@@ -2,23 +2,29 @@ from flask import render_template, url_for, redirect
 from requests import session
 
 from ConviteDigital import app, database
-from ConviteDigital.models import Usuario,Foto
+from ConviteDigital.models import Usuario,Foto,Pagamento_Simplificado
 from flask_login import login_required, login_user, logout_user, current_user
-from ConviteDigital.forms import  FormLogin, FormCriarConta, FormFoto
+from ConviteDigital.forms import  FormLogin, FormCriarConta, FormFoto,FormPGF
 import os
 from werkzeug.utils import secure_filename
 from Pix import GerarQrcode
 
 @app.route("/", methods=["GET","POST"])
 def homepage():
-    formlogin = FormLogin()
-    if formlogin.validate_on_submit():
-        usuario = Usuario.query.filter_by(username=formlogin.user.data).first()
-        if usuario and usuario.senha == formlogin.senha.data :
-            login_user(usuario)
-            return redirect(url_for("confirma",user=usuario.username))
-
-    return render_template("homepage.html", form=formlogin)
+    formPfacil = FormPGF()
+    if formPfacil.validate_on_submit():
+        pagamentosimplificado = Pagamento_Simplificado(convidados=formPfacil.convidados.data,
+                                          quantidade=formPfacil.qtd.data)
+        qrcodecop = GerarQrcode(formPfacil.convidados.data,float(formPfacil.qtd.data))[0]
+        qrcodeimg = GerarQrcode(formPfacil.convidados.data,float(formPfacil.qtd.data))[1]
+        statusPag = GerarQrcode(formPfacil.convidados.data,float(formPfacil.qtd.data))[2]
+        database.session.add(pagamentosimplificado)
+        database.session.commit()
+        script_to_run = True
+        return render_template("homepage.html", form=formPfacil, qrcodecop=qrcodecop, qrcodeimg=qrcodeimg,
+                               statusPag=statusPag,script_to_run=script_to_run)
+    else:
+        return render_template("homepage.html", form=formPfacil)
 
 
 
@@ -61,6 +67,8 @@ def confirma(user):
             foto = Foto(imagem = nome_arq, id_usuario = current_user.id )
             database.session.add(foto)
             database.session.commit()
+
+
 
         return render_template("pagamento.html", user=user, form=formfoto, qrcodecop = qrcodecop,qrcodeimg = qrcodeimg,statusPag = statusPag)
     else:

@@ -1,3 +1,5 @@
+from numbers import Number
+
 from flask_wtf import FlaskForm
 from wtforms import  StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import  DataRequired, EqualTo, length, ValidationError
@@ -24,3 +26,9 @@ class FormCriarConta(FlaskForm):
 class FormFoto(FlaskForm):
     foto = FileField("Foto", validators=[DataRequired()])
     botao_conf = SubmitField("enviar")
+
+
+class FormPGF(FlaskForm):
+    convidados = StringField("Convidados",validators=[DataRequired()])
+    qtd = StringField("Quantidade",validators=[DataRequired()])
+    botao_conf = SubmitField("Gerar Pagamento")

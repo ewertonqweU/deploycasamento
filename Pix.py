@@ -1,11 +1,11 @@
 import requests
 import json
 
-def GerarQrcode(Usuario):
+def GerarQrcode(Usuario,quantidade):
   url = "https://api.mercadopago.com/v1/payments"
 
   payload = json.dumps({
-    "transaction_amount": 0.5,
+    "transaction_amount": 78*quantidade,
     "description": f"Confirmação de presença de {Usuario}",
     "payment_method_id": "pix",
     "payer": {
@@ -42,5 +42,4 @@ def GerarQrcode(Usuario):
   StatusPag = Qrcode['status']
   return Copia_e_Cola,img,StatusPag
 
-#print(GerarQrcode()[0])
-#print(Qrcode)
+print(GerarQrcode("ewerton",float("2")))

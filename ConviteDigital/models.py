@@ -18,3 +18,10 @@ class Foto(database.Model):
     imagem = database.Column(database.String,default="default.png")
     data = database.Column(database.DateTime, nullable = False, default=datetime.now())
     id_usuario = database.Column(database.Integer, database.ForeignKey('usuario.id'),nullable = False)
+
+class Pagamento_Simplificado(database.Model):
+    id = database.Column(database.Integer,primary_key=True)
+    convidados = database.Column(database.String,nullable = False)
+    quantidade = database.Column(database.String,nullable = False)
+    idpag = database.Column(database.String)
+    status = database.Column(database.String)
